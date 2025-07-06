@@ -2,6 +2,8 @@ const fs = require("fs");
 
 const TRIPS_DIRECTORY = "./data/trips";
 
+const triptionary = new Map();
+
 function initialize() {
     if (!fs.existsSync(TRIPS_DIRECTORY)) {
         console.error(`${TRIPS_DIRECTORY} not found!`);
@@ -24,7 +26,7 @@ function initialize() {
             tripFileEntry[6] = tripFileEntry[6].replaceAll("\r", ""); 
             return tripFileEntry;
         });
-
+        triptionary.set(fileName, tripEntries);
     });
     return true;
 }
