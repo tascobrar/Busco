@@ -1,4 +1,5 @@
 import fs from "fs";
+import { getFileContentsAsEntries } from "./utils";
 
 export const tripFilesToEntries = new Map();
 
@@ -17,11 +18,7 @@ export function initializeTrips() {
     tripFiles.forEach((tripFileName) => {
         console.log(`Found trip file ${tripFileName}`);
         const tripFileContents = fs.readFileSync(`${TRIPS_DIRECTORY}/${tripFileName}`).toString();
-        const tripEntries = tripFileContents
-        .split("\n")
-        .slice(1)
-        .filter((tripEntry) => !!tripEntry)
-        .map(tripEntry => tripEntry.split(","))
+        const tripEntries = getFileContentsAsEntries(tripFileContents);
         tripEntries.forEach((tripEntry) => {
             tripEntry[6] = tripEntry[6].replaceAll("\r", "");
         })

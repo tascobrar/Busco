@@ -1,4 +1,5 @@
 import fs from "fs";
+import { getFileContentsAsEntries } from "./utils";
 
 export const shapeFilesToEntries = new Map();
 
@@ -17,11 +18,7 @@ export function initializeShapes() {
     shapeFiles.forEach((shapeFileName) => {
         console.log(`Found shape file ${shapeFileName}`);
         const shapeFileContents = fs.readFileSync(`${SHAPES_DIRECTORY}/${shapeFileName}`).toString();
-        const shapeEntries = shapeFileContents
-        .split("\n")
-        .slice(1)
-        .filter((shapeEntry) => !!shapeEntry)
-        .map((shapeEntry) => shapeEntry.split(","));
+        const shapeEntries = getFileContentsAsEntries(shapeFileContents);
         shapeEntries.forEach((shapeEntry) => {
             shapeEntry[3] = shapeEntry[3].replaceAll("\r", "");
         });
