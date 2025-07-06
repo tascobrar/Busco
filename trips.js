@@ -27,12 +27,12 @@ export function initializeTrips() {
     return true;
 }
 
-export function testTrips() {
+export function testTrips(routeName) {
     console.log("Testing trips");
     tripFilesToEntries.forEach((tripEntries, fileName) => {
         tripEntries.forEach((tripEntry) => {
-            if (tripEntry[0] == "Q53+") {
-                console.log(`Found Q53+ entry ${tripEntry}`);
+            if (tripEntry[0] == routeName) {
+                console.log(`Found ${routeName} entry ${tripEntry}`);
             }
         })
     })

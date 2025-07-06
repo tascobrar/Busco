@@ -16,6 +16,6 @@ function initialize() {
 }
 
 initialize();
-testTrips();
-testShapes();
-testRouteShapeDesignations();
+testTrips("Q53+");
+testShapes("SBS440520");
+testRouteShapeDesignations("Q35");

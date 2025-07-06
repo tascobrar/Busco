@@ -27,12 +27,12 @@ export function initializeShapes() {
     return true;
 }
 
-export function testShapes() {
+export function testShapes(shapeName) {
     console.log("Testing shapes");
     shapeFilesToEntries.forEach((shapeEntries, fileName) => {
         shapeEntries.forEach((shapeEntry) => {
-            if (shapeEntry[0] == "SBS530049") {
-                console.log(`Found SBS530049 coordinates ${[shapeEntry[1]]},${shapeEntry[2]}`);
+            if (shapeEntry[0] == shapeName) {
+                console.log(`Found ${shapeName} coordinates ${[shapeEntry[1]]},${shapeEntry[2]}`);
             }
         });
     });

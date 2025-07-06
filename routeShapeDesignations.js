@@ -26,13 +26,13 @@ export function initializeRouteShapeDesignations() {
     })
 }
 
-export function testRouteShapeDesignations() {
+export function testRouteShapeDesignations(routeName) {
     console.log("Testing route shape designations");
     tripFilesToRouteToShapesMaps.forEach((routeToShapesMap, tripFileName) => {
         routeToShapesMap.forEach((shapes, route) => {
-            if (route == "Q53+") {
+            if (route == routeName) {
                 shapes.forEach((shape) => {
-                    console.log(`Found Q53+ shape of ${shape}`);
+                    console.log(`Found ${routeName} shape ${shape}`);
                 })
             }
         })
