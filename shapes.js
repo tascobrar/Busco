@@ -32,7 +32,7 @@ export function testShapes(shapeName) {
     shapeFilesToEntries.forEach((shapeEntries, fileName) => {
         shapeEntries.forEach((shapeEntry) => {
             if (shapeEntry[0] == shapeName) {
-                console.log(`Found ${shapeName} coordinates ${[shapeEntry[1]]},${shapeEntry[2]}`);
+                console.log(`Found ${shapeName} entry ${shapeEntry}`);
             }
         });
     });
