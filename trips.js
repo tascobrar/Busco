@@ -28,7 +28,7 @@ export function initializeTrips() {
 }
 
 export function testTrips(routeName) {
-    console.log("Testing trips");
+    console.log(`Testing trips with name ${routeName}`);
     tripFilesToEntries.forEach((tripEntries, fileName) => {
         tripEntries.forEach((tripEntry) => {
             if (tripEntry[0] == routeName) {

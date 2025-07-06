@@ -27,7 +27,7 @@ export function initializeRouteShapeDesignations() {
 }
 
 export function testRouteShapeDesignations(routeName) {
-    console.log("Testing route shape designations");
+    console.log(`Testing route shape designations with name ${routeName}`);
     tripFilesToRouteToShapesMaps.forEach((routeToShapesMap, tripFileName) => {
         routeToShapesMap.forEach((shapes, route) => {
             if (route == routeName) {

@@ -28,7 +28,7 @@ export function initializeShapes() {
 }
 
 export function testShapes(shapeName) {
-    console.log("Testing shapes");
+    console.log(`Testing shapes with name ${shapeName}`);
     shapeFilesToEntries.forEach((shapeEntries, fileName) => {
         shapeEntries.forEach((shapeEntry) => {
             if (shapeEntry[0] == shapeName) {
