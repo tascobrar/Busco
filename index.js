@@ -1,4 +1,4 @@
-import { initializeCoordinates, shapeToCoordinatesMap } from "./coordinates.js";
+import { initializeCoordinates } from "./coordinates.js";
 import { initializeShapes } from "./shapes.js";
 import { initializeTrips } from "./trips.js";
 
