@@ -1,0 +1,19 @@
+{
+  "name": "busco",
+  "version": "1.0.0",
+  "description": "Gets coordinates of bus routes",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tascobrar/Busco.git"
+  },
+  "author": "Tascobrar",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tascobrar/Busco/issues"
+  },
+  "homepage": "https://github.com/tascobrar/Busco#readme"
+}
