@@ -12,6 +12,7 @@ export function initializeShapes() {
     const shapeFiles = fs.readdirSync(SHAPES_DIRECTORY);
     if (!shapeFiles) {
         console.error("Couldn't read shapes directory!");
+        return false;
     }
     shapeFiles.forEach((shapeFileName) => {
         console.log(`Found shape file ${shapeFileName}`);
@@ -19,8 +20,8 @@ export function initializeShapes() {
         const shapeEntries = shapeFileContents
         .split("\n")
         .slice(1)
-        .filter((string) => !!string)
-        .map((string) => string.split(","));
+        .filter((shapeEntry) => !!shapeEntry)
+        .map((shapeEntry) => shapeEntry.split(","));
         shapeEntries.forEach((shapeEntry) => {
             shapeEntry[3] = shapeEntry[3].replaceAll("\r", "");
         });
