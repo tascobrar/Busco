@@ -6,13 +6,13 @@ if (!fs.existsSync(TRIPS_DIRECTORY)) {
     console.error(`${TRIPS_DIRECTORY} not found!`);
 }
 else {
-    fs.readdir("./data/trips", (error, files) => {
-        if (error) {
-            console.error("Couldn't read trips directory!", error);
-            return;
-        }
-        files.forEach((file) => {
-            console.log(`Found trip file ${file}`)
+    let tripFiles = fs.readdirSync(TRIPS_DIRECTORY);
+    if (!tripFiles) {
+        console.error("Couldn't read trips directory!");
+    }
+    else {
+        tripFiles.forEach((fileName) => {
+            console.log(`Found trip file ${fileName}`);
         })
-    });
+    }
 }
