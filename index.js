@@ -15,7 +15,7 @@ function initialize() {
     tripFiles.forEach((fileName) => {
         console.log(`Found trip file ${fileName}`);
         const tripFileContents = fs.readFileSync(`${TRIPS_DIRECTORY}/${fileName}`).toString();
-        const tripFileEntries = tripFileContents
+        const tripEntries = tripFileContents
         .split("\n")
         .slice(1)
         .slice(0, -1)
@@ -24,6 +24,7 @@ function initialize() {
             tripFileEntry[6] = tripFileEntry[6].replaceAll("\r", ""); 
             return tripFileEntry;
         });
+
     });
     return true;
 }
