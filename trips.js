@@ -32,7 +32,7 @@ export function testTrips() {
     tripFilesToEntries.forEach((tripEntries, fileName) => {
         tripEntries.forEach((tripEntry) => {
             if (tripEntry[0] == "Q53+") {
-                console.log(`Found Q53+ shape ${tripEntry[6]}`);
+                console.log(`Found Q53+ entry ${tripEntry}`);
             }
         })
     })
