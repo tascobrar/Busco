@@ -14,18 +14,18 @@ export function initializeTrips() {
         console.error("Couldn't read trips directory!");
         return false;
     }
-    tripFiles.forEach((fileName) => {
-        console.log(`Found trip file ${fileName}`);
-        const tripFileContents = fs.readFileSync(`${TRIPS_DIRECTORY}/${fileName}`).toString();
+    tripFiles.forEach((tripFileName) => {
+        console.log(`Found trip file ${tripFileName}`);
+        const tripFileContents = fs.readFileSync(`${TRIPS_DIRECTORY}/${tripFileName}`).toString();
         const tripEntries = tripFileContents
         .split("\n")
         .slice(1)
-        .filter((string) => !!string)
-        .map(entry => entry.split(","))
-        tripEntries.forEach((entry) => {
-            entry[6] = entry[6].replaceAll("\r", "");
+        .filter((tripEntry) => !!tripEntry)
+        .map(tripEntry => tripEntry.split(","))
+        tripEntries.forEach((tripEntry) => {
+            tripEntry[6] = tripEntry[6].replaceAll("\r", "");
         })
-        triptionary.set(fileName, tripEntries);
+        triptionary.set(tripFileName, tripEntries);
     });
     return true;
 }
