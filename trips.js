@@ -1,8 +1,8 @@
 import fs from "fs";
 
-const TRIPS_DIRECTORY = "./data/trips";
-
 export const triptionary = new Map();
+
+const TRIPS_DIRECTORY = "./data/trips";
 
 export function initializeTrips() {
     if (!fs.existsSync(TRIPS_DIRECTORY)) {
@@ -20,12 +20,11 @@ export function initializeTrips() {
         const tripEntries = tripFileContents
         .split("\n")
         .slice(1)
-        .slice(0, -1)
+        .filter((string) => !!string)
         .map(entry => entry.split(","))
-        .map((tripFileEntry) => {
-            tripFileEntry[6] = tripFileEntry[6].replaceAll("\r", ""); 
-            return tripFileEntry;
-        });
+        tripEntries.forEach((entry) => {
+            entry[6] = entry[6].replaceAll("\r", "");
+        })
         triptionary.set(fileName, tripEntries);
     });
     return true;
