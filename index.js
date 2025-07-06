@@ -2,15 +2,15 @@ const fs = require("fs");
 
 const TRIPS_DIRECTORY = "./data/trips";
 
-function run() {
+function initialize() {
     if (!fs.existsSync(TRIPS_DIRECTORY)) {
         console.error(`${TRIPS_DIRECTORY} not found!`);
-        return;
+        return false;
     }
     const tripFiles = fs.readdirSync(TRIPS_DIRECTORY);
     if (!tripFiles) {
         console.error("Couldn't read trips directory!");
-        return;
+        return false;
     }
     tripFiles.forEach((fileName) => {
         console.log(`Found trip file ${fileName}`);
@@ -24,7 +24,8 @@ function run() {
             tripFileEntry[6] = tripFileEntry[6].replaceAll("\r", ""); 
             return tripFileEntry;
         });
-    })
+    });
+    return true;
 }
 
-run();
+initialize();
