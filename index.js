@@ -13,6 +13,7 @@ else {
     else {
         tripFiles.forEach((fileName) => {
             console.log(`Found trip file ${fileName}`);
+            console.log(fs.readFileSync(`${TRIPS_DIRECTORY}/${fileName}`).toString());
         })
     }
 }
