@@ -1,7 +1,7 @@
 import fs from "fs";
 import { getFileContentsAsEntries } from "./utils.js";
 
-export const tripFilesToEntries = new Map();
+export const tripFileToTripEntries = new Map();
 
 const TRIPS_DIRECTORY = "./data/trips";
 
@@ -22,14 +22,14 @@ export function initializeTrips() {
         tripEntries.forEach((tripEntry) => {
             tripEntry[6] = tripEntry[6].replaceAll("\r", "");
         })
-        tripFilesToEntries.set(tripFileName, tripEntries);
+        tripFileToTripEntries.set(tripFileName, tripEntries);
     });
     return true;
 }
 
 export function testTrips(routeName) {
-    console.log("Testing trips");
-    tripFilesToEntries.forEach((tripEntries, fileName) => {
+    console.log(`Testing trips with name ${routeName}`);
+    tripFileToTripEntries.forEach((tripEntries, fileName) => {
         tripEntries.forEach((tripEntry) => {
             if (tripEntry[0] == routeName) {
                 console.log(`Found ${routeName} entry ${tripEntry}`);
