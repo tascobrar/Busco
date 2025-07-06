@@ -1,5 +1,5 @@
 import fs from "fs";
-import { getFileContentsAsEntries } from "./utils";
+import { getFileContentsAsEntries } from "./utils.js";
 
 export const tripFilesToEntries = new Map();
 
@@ -25,4 +25,15 @@ export function initializeTrips() {
         tripFilesToEntries.set(tripFileName, tripEntries);
     });
     return true;
+}
+
+export function testTrips() {
+    console.log("Testing trips");
+    tripFilesToEntries.forEach((tripEntries, fileName) => {
+        tripEntries.forEach((tripEntry) => {
+            if (tripEntry[0] == "Q53+") {
+                console.log(`Found Q53+ shape ${tripEntry[6]}`);
+            }
+        })
+    })
 }

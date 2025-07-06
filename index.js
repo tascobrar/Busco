@@ -1,5 +1,5 @@
-import { initializeShapes } from "./shapes.js";
-import { initializeTrips } from "./trips.js";
+import { initializeShapes, testShapes } from "./shapes.js";
+import { initializeTrips, testTrips } from "./trips.js";
 
 function initialize() {
     if (!initializeTrips()) {
@@ -12,3 +12,5 @@ function initialize() {
 }
 
 initialize();
+testTrips();
+testShapes();

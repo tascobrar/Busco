@@ -1,5 +1,5 @@
 export function getFileContentsAsEntries(fileContents) {
-    return tripFileContents
+    return fileContents
         .split("\n")
         .slice(1)
         .filter((entry) => !!entry)

@@ -1,5 +1,5 @@
 import fs from "fs";
-import { getFileContentsAsEntries } from "./utils";
+import { getFileContentsAsEntries } from "./utils.js";
 
 export const shapeFilesToEntries = new Map();
 
@@ -25,4 +25,15 @@ export function initializeShapes() {
         shapeFilesToEntries.set(shapeFileName, shapeEntries);
     })
     return true;
+}
+
+export function testShapes() {
+    console.log("Testing shapes");
+    shapeFilesToEntries.forEach((shapeEntries, fileName) => {
+        shapeEntries.forEach((shapeEntry) => {
+            if (shapeEntry[0] == "SBS530049") {
+                console.log(`Found SBS530049 coordinates ${[shapeEntry[1]]},${shapeEntry[2]}`);
+            }
+        });
+    });
 }
