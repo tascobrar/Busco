@@ -1,6 +1,6 @@
 import fs from "fs";
 
-export const triptionary = new Map();
+export const tripFilesToEntries = new Map();
 
 const TRIPS_DIRECTORY = "./data/trips";
 
@@ -25,7 +25,7 @@ export function initializeTrips() {
         tripEntries.forEach((tripEntry) => {
             tripEntry[6] = tripEntry[6].replaceAll("\r", "");
         })
-        triptionary.set(tripFileName, tripEntries);
+        tripFilesToEntries.set(tripFileName, tripEntries);
     });
     return true;
 }

@@ -1,4 +1,3 @@
-import { initializeCoordinates } from "./coordinates.js";
 import { initializeShapes } from "./shapes.js";
 import { initializeTrips } from "./trips.js";
 
@@ -7,9 +6,6 @@ function initialize() {
         return false;
     }
     if (!initializeShapes()) {
-        return false;
-    }
-    if (!initializeCoordinates()) {
         return false;
     }
     return true;
