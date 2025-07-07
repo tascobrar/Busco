@@ -17,7 +17,6 @@ export function initializeTrips() {
         return false;
     }
     tripFiles.forEach((tripFileName) => {
-        console.log(`Found trip file ${tripFileName}`);
         const tripFileContents = fs.readFileSync(`${TRIPS_DIRECTORY}/${tripFileName}`).toString();
         const tripEntries = getFileContentsAsEntries(tripFileContents);
         tripEntries.forEach((tripEntry) => {

@@ -17,7 +17,6 @@ export function initializeShapes() {
         return false;
     }
     shapeFiles.forEach((shapeFileName) => {
-        console.log(`Found shape file ${shapeFileName}`);
         const shapeFileContents = fs.readFileSync(`${SHAPES_DIRECTORY}/${shapeFileName}`).toString();
         const shapeEntries = getFileContentsAsEntries(shapeFileContents);
         shapeEntries.forEach((shapeEntry) => {
