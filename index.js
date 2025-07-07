@@ -5,19 +5,10 @@ import { initializeShapes, testShapes } from "./shapes.js";
 import { initializeTrips, testTrips } from "./trips.js";
 
 function initialize() {
-    if (!initializeTrips()) {
-        return false;
-    }
-    if (!initializeShapes()) {
-        return false;
-    }
-    if (!initializeRouteShapeDesignations()) {
-        return false;
-    }
-    if (!initializeShapeCoordinateDesignations()) {
-        return false;
-    }
-    return true;
+    return initializeTrips() 
+        && initializeShapes() 
+        && initializeRouteShapeDesignations() 
+        && initializeShapeCoordinateDesignations();
 }
 
 initialize();
