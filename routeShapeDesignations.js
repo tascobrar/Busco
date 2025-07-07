@@ -24,6 +24,7 @@ export function initializeRouteShapeDesignations() {
             shapes.push(shape);
         })
     })
+    return true;
 }
 
 export function testRouteShapeDesignations(routeName) {
