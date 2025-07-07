@@ -2,6 +2,7 @@ import fs from "fs";
 import { getFileContentsAsEntries } from "./utils.js";
 
 export const shapeFileToShapeEntries = new Map();
+export let allShapeEntries = [];
 
 const SHAPES_DIRECTORY = "./data/shapes";
 
@@ -23,17 +24,16 @@ export function initializeShapes() {
             shapeEntry[3] = shapeEntry[3].replaceAll("\r", "");
         });
         shapeFileToShapeEntries.set(shapeFileName, shapeEntries);
+        allShapeEntries = allShapeEntries.concat(shapeEntries);
     })
     return true;
 }
 
 export function testShapes(shapeName) {
     console.log(`Testing shapes with name ${shapeName}`);
-    shapeFileToShapeEntries.forEach((shapeEntries, fileName) => {
-        shapeEntries.forEach((shapeEntry) => {
-            if (shapeEntry[0] == shapeName) {
-                console.log(`Found ${shapeName} entry ${shapeEntry}`);
-            }
-        });
+    allShapeEntries.forEach((shapeEntry) => {
+        if (shapeEntry[0] == shapeName) {
+            console.log(`Found ${shapeName} entry ${shapeEntry}`);
+        }
     });
 }
