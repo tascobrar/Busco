@@ -1,3 +1,4 @@
+import { allRoutesToShapes } from "./routeShapeDesignations.js";
 import { shapeFileToShapeEntries } from "./shapes.js";
 
 export const shapeFileToShapeToCoordinates = new Map();
@@ -31,4 +32,8 @@ export function testShapeCoordinateDesignations(shapeName) {
             });
         }
     });
+}
+
+export function getRouteCoordinates(routeName) {
+    return new Set(Array.from(new Set(allRoutesToShapes.get(routeName))).map((shape) => allShapesToCoordinates.get(shape)).flat(1));
 }
