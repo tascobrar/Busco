@@ -1,7 +1,7 @@
 import { tripFileToTripEntries } from "./trips.js";
 
 export const tripFileToRouteToShapesMap = new Map(); 
-export let allRoutesToShapes = [];
+export let allRoutesToShapes = new Map();
 
 export function initializeRouteShapeDesignations() {
     tripFileToTripEntries.forEach((tripEntries, tripFileName) => {

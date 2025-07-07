@@ -2,7 +2,7 @@ import { allRoutesToShapes } from "./routeShapeDesignations.js";
 import { shapeFileToShapeEntries } from "./shapes.js";
 
 export const shapeFileToShapeToCoordinates = new Map();
-export let allShapesToCoordinates = [];
+export let allShapesToCoordinates = new Map();
 
 export function initializeShapeCoordinateDesignations() {
     shapeFileToShapeEntries.forEach((shapeEntries, shapeFile) => {
