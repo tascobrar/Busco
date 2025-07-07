@@ -1,6 +1,7 @@
 import { shapeFileToShapeEntries } from "./shapes.js";
 
 export const shapeFileToShapeToCoordinates = new Map();
+export let allShapesToCoordinates = [];
 
 export function initializeShapeCoordinateDesignations() {
     shapeFileToShapeEntries.forEach((shapeEntries, shapeFile) => {
@@ -15,21 +16,19 @@ export function initializeShapeCoordinateDesignations() {
             else {
                 shapeFileToShapeToCoordinates.get(shapeFile).set(shape, [coordinatePair]);
             }
-        
-        })
+        });
+        allShapesToCoordinates = new Map([...allShapesToCoordinates].concat([...shapeToCoordinates]));
     });
     return true;
 }
 
 export function testShapeCoordinateDesignations(shapeName) {
     console.log(`Testing shape coordinate designations with name ${shapeName}`);
-    shapeFileToShapeToCoordinates.forEach((shapeToCoordinates, shapeFile) => {
-        shapeToCoordinates.forEach((coordinatePairs, shape) => {
-            if (shape == shapeName) {
-                coordinatePairs.forEach((coordinatePair) => {
-                    console.log(`Found coordinate pair ${coordinatePair}`);
-                })
-            }
-        })
-    })
+    allShapesToCoordinates.forEach((coordinatePairs, shape) => {
+        if (shape == shapeName) {
+            coordinatePairs.forEach((coordinatePair) => {
+                console.log(`Found coordinate pair ${coordinatePair}`);
+            });
+        }
+    });
 }
