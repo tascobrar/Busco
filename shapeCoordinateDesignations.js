@@ -35,5 +35,11 @@ export function testShapeCoordinateDesignations(shapeName) {
 }
 
 export function getRouteCoordinates(routeName) {
-    return new Set(Array.from(new Set(allRoutesToShapes.get(routeName))).map((shape) => allShapesToCoordinates.get(shape)).flat(1));
+    let result = [];
+    let shapes = Array.from(new Set(allRoutesToShapes.get(routeName)));
+    shapes.forEach((shape) => {
+        let coordinatePairs = Array.from(new Set(allShapesToCoordinates.get(shape)));
+        result.push(coordinatePairs);
+    })
+    return result;
 }
