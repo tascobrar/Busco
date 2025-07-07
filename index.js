@@ -14,6 +14,6 @@ function initialize() {
 initialize();
 testTrips("Q53+");
 testShapes("SBS440520");
-//testRouteShapeDesignations("Q35");
+testRouteShapeDesignations("Q35");
 //testShapeCoordinateDesignations("SBS440520");
-console.log(getAllQ53Coordinates());
+//console.log(getAllQ53Coordinates());
