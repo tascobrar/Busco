@@ -6,7 +6,7 @@ export function getAllQ53Coordinates() {
     const result = [];
     const allRouteShapeDesignations = flattenDesignations(tripFileToRouteToShapesMap);
     const allQ53Shapes = allRouteShapeDesignations.get("Q53+");
-    allQ53Shapes.forEach(q53Shape => {
+    new Set(allQ53Shapes).forEach(q53Shape => {
         flattenDesignations(shapeFileToShapeToCoordinates).get(q53Shape).forEach((coordinatePair) => {
             result.push(coordinatePair);
         })
