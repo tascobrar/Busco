@@ -21,6 +21,10 @@ export function main() {
         return;
     }
 
+    runTests();
+}
+
+function runTests() {
     testTrips("Q53+");
     testShapes("SBS440520");
     testRouteShapeDesignations("Q35");
