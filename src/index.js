@@ -3,17 +3,29 @@ import { getRouteCoordinates, initializeShapeCoordinateDesignations, testShapeCo
 import { initializeShapes, testShapes } from "./shapes.js";
 import { initializeTrips, testTrips } from "./trips.js";
 
-function initialize() {
-    process.chdir("./run");
-    return initializeTrips() 
-        && initializeShapes() 
-        && initializeRouteShapeDesignations() 
-        && initializeShapeCoordinateDesignations();
-}
-initialize();
+let initialized = false;
 
-testTrips("Q53+");
-testShapes("SBS440520");
-testRouteShapeDesignations("Q35");
-testShapeCoordinateDesignations("SBS440520");
-console.log(getRouteCoordinates("Q50"));
+function initialize() {
+    if (initializeTrips() && initializeShapes() && initializeRouteShapeDesignations() && initializeShapeCoordinateDesignations()) {
+        return initialized = true;
+    }
+    else {
+        return initialized = false;
+    }
+}
+
+export function main() {
+    process.chdir("./run/");
+    if (!initialize()) {
+        console.error("Initialization failed!");
+        return;
+    }
+
+    testTrips("Q53+");
+    testShapes("SBS440520");
+    testRouteShapeDesignations("Q35");
+    testShapeCoordinateDesignations("SBS440520");
+    console.log(getRouteCoordinates("Q50"));
+}
+
+main();
