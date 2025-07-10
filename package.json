@@ -18,6 +18,7 @@
   "homepage": "https://github.com/tascobrar/Busco#readme",
   "dependencies": {
     "clipboardy": "^4.0.0",
-    "node": "^22.17.0"
+    "node": "^22.17.0",
+    "typescript": "^5.8.3"
   }
 }
