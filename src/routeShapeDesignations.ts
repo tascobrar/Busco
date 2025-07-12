@@ -1,11 +1,11 @@
 import { tripFileToTripEntries } from "./trips";
 
-export const tripFileToRouteToShapesMap = new Map(); 
-export let allRoutesToShapes = new Map();
+export const tripFileToRouteToShapesMap: Map<string, Map<string, string[]>> = new Map(); 
+export let allRoutesToShapes: Map<string, string[]> = new Map();
 
 export function initializeRouteShapeDesignations() {
     tripFileToTripEntries.forEach((tripEntries, tripFileName) => {
-        let routeToShapesMap;
+        let routeToShapesMap: Map<string, string[]>;
         if (tripFileToRouteToShapesMap.has(tripFileName)) {
             routeToShapesMap = tripFileToRouteToShapesMap.get(tripFileName);
         }
@@ -13,9 +13,9 @@ export function initializeRouteShapeDesignations() {
             tripFileToRouteToShapesMap.set(tripFileName, routeToShapesMap = new Map());
         }
         tripEntries.forEach((tripEntry) => {
-            let route = tripEntry[0];
-            let shape = tripEntry[6];
-            let shapes;
+            let route: string = tripEntry[0];
+            let shape: string = tripEntry[6];
+            let shapes: string[];
             if (routeToShapesMap.has(route)) {
                 shapes = routeToShapesMap.get(route);
             }
@@ -29,7 +29,7 @@ export function initializeRouteShapeDesignations() {
     return true;
 }
 
-export function testRouteShapeDesignations(routeName) {
+export function testRouteShapeDesignations(routeName: string) {
     console.log(`Testing route shape designations with name ${routeName}`);
     allRoutesToShapes.forEach((shapes, route) => {
         if (route == routeName) {
