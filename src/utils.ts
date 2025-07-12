@@ -1,4 +1,4 @@
-export type Entry = String[];
+export type Entry = string[];
 export type Entries = Entry[];
 export type EntryBook = Map<string, Entries>;
 export type CoordinatePair = number[];
