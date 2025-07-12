@@ -1,3 +1,4 @@
+import { InitializationResult, SUCCESS } from "./initialization";
 import { allRoutesToShapes } from "./routeShapeDesignations";
 import { SHAPE_LATITUDE_INDEX, SHAPE_LONGITUDE_INDEX, shapeFileToShapeEntries } from "./shapes";
 import { CoordinatePair } from "./utils";
@@ -5,7 +6,7 @@ import { CoordinatePair } from "./utils";
 export const shapeFileToShapeToCoordinates: Map<string, Map<string, CoordinatePair[]>> = new Map();
 export let allShapesToCoordinates: Map<string, CoordinatePair[]> = new Map();
 
-export function initializeShapeCoordinateDesignations() {
+export function initializeShapeCoordinateDesignations(): InitializationResult {
     shapeFileToShapeEntries.forEach((shapeEntries, shapeFile) => {
         const shapeToCoordinates: Map<string, CoordinatePair[]> = new Map();
         shapeFileToShapeToCoordinates.set(shapeFile, shapeToCoordinates);
@@ -21,7 +22,7 @@ export function initializeShapeCoordinateDesignations() {
         });
         allShapesToCoordinates = new Map([...allShapesToCoordinates].concat([...shapeToCoordinates]));
     });
-    return true;
+    return SUCCESS;
 }
 
 export function testShapeCoordinateDesignations(shapeName: string) {

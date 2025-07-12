@@ -1,5 +1,6 @@
 import fs from "fs";
 import { Entries, EntryBook, getFileContentsAsEntries } from "./utils";
+import { failedInitialization, InitializationResult, SUCCESS } from "./initialization";
 
 export const SHAPE_SHAPE_INDEX: number = 0;
 export const SHAPE_LONGITUDE_INDEX: number = 1;
@@ -9,15 +10,13 @@ export let allShapeEntries: Entries = [];
 
 const SHAPES_DIRECTORY: string = "./data/shapes";
 
-export function initializeShapes(): boolean {
+export function initializeShapes(): InitializationResult {
     if (!fs.existsSync(SHAPES_DIRECTORY)) {
-        console.error(`${SHAPES_DIRECTORY} not found!`);
-        return false;
+        return failedInitialization(`${SHAPES_DIRECTORY} not found!`);
     }
     const shapeFiles: string[] = fs.readdirSync(SHAPES_DIRECTORY);
     if (!shapeFiles) {
-        console.error("Couldn't read shapes directory!");
-        return false;
+        return failedInitialization("Couldn't read shapes directory!");
     }
     shapeFiles.forEach((shapeFileName) => {
         const shapeFileContents: string = fs.readFileSync(`${SHAPES_DIRECTORY}/${shapeFileName}`).toString();
@@ -28,7 +27,7 @@ export function initializeShapes(): boolean {
         shapeFileToShapeEntries.set(shapeFileName, shapeEntries);
         allShapeEntries = allShapeEntries.concat(shapeEntries);
     })
-    return true;
+    return SUCCESS;
 }
 
 export function testShapes(shapeName: string) {

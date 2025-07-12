@@ -1,9 +1,10 @@
 import { TRIP_ROUTE_INDEX, TRIP_SHAPE_INDEX, tripFileToTripEntries } from "./trips";
+import { InitializationResult, SUCCESS } from "./initialization";
 
 export const tripFileToRouteToShapesMap: Map<string, Map<string, string[]>> = new Map(); 
 export let allRoutesToShapes: Map<string, string[]> = new Map();
 
-export function initializeRouteShapeDesignations() {
+export function initializeRouteShapeDesignations(): InitializationResult {
     tripFileToTripEntries.forEach((tripEntries, tripFileName) => {
         let routeToShapesMap: Map<string, string[]>;
         if (tripFileToRouteToShapesMap.has(tripFileName)) {
@@ -26,7 +27,7 @@ export function initializeRouteShapeDesignations() {
         });
         allRoutesToShapes = new Map([...allRoutesToShapes].concat([...routeToShapesMap]));
     })
-    return true;
+    return SUCCESS;
 }
 
 export function testRouteShapeDesignations(routeName: string) {

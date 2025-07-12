@@ -2,22 +2,25 @@ import { initializeRouteShapeDesignations, testRouteShapeDesignations } from "./
 import { getRouteCoordinates, initializeShapeCoordinateDesignations, testShapeCoordinateDesignations } from "./shapeCoordinateDesignations";
 import { initializeShapes, testShapes } from "./shapes";
 import { initializeTrips, testTrips } from "./trips";
+import { failedInitialization, InitializationResult, SUCCESS } from "./initialization";
 
-let initialized: boolean = false;
+let initializationResult: InitializationResult;
 
-export function initialize(): boolean {
-    if (initializeTrips() && initializeShapes() && initializeRouteShapeDesignations() && initializeShapeCoordinateDesignations()) {
-        return initialized = true;
+export function initialize(): InitializationResult {
+    for (const initializationFunction of [initializeTrips, initializeShapes, initializeRouteShapeDesignations, initializeShapeCoordinateDesignations]) {
+        let result = initializationFunction();
+        if (!result.succeeded) {
+            return initializationResult = failedInitialization(`Initialization failed while running ${initializationFunction.name}: ${result.message}`);
+        }
     }
-    else {
-        return initialized = false;
-    }
+    return initializationResult = SUCCESS;
 }
 
 export function main(): void {
     process.chdir("./run/");
-    if (!initialize()) {
-        console.error("Initialization failed!");
+    let initializationResult = initialize();
+    if (!initializationResult.succeeded) {
+        console.error(`Main initialization failed! ${initializationResult.message}`);
         return;
     }
 

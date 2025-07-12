@@ -1,5 +1,6 @@
 import fs from "fs";
 import { getFileContentsAsEntries, EntryBook, Entries } from "./utils";
+import { failedInitialization, InitializationResult, SUCCESS } from "./initialization";
 
 export const TRIP_ROUTE_INDEX: number = 0;
 export const TRIP_SHAPE_INDEX: number = 6;
@@ -8,15 +9,13 @@ export let allTripEntries: Entries = [];
 
 const TRIPS_DIRECTORY: string = "./data/trips";
 
-export function initializeTrips(): boolean {
+export function initializeTrips(): InitializationResult {
     if (!fs.existsSync(TRIPS_DIRECTORY)) {
-        console.error(`${TRIPS_DIRECTORY} not found!`);
-        return false;
+        return failedInitialization(`${TRIPS_DIRECTORY} not found!`);
     }
     const tripFiles: string[] = fs.readdirSync(TRIPS_DIRECTORY);
     if (!tripFiles) {
-        console.error("Couldn't read trips directory!");
-        return false;
+        return failedInitialization("Couldn't read trips directory!");
     }
     tripFiles.forEach((tripFileName) => {
         const tripFileContents: string = fs.readFileSync(`${TRIPS_DIRECTORY}/${tripFileName}`).toString();
@@ -27,7 +26,7 @@ export function initializeTrips(): boolean {
         tripFileToTripEntries.set(tripFileName, tripEntries);
         allTripEntries = allTripEntries.concat(tripEntries);
     });
-    return true;
+    return SUCCESS;
 }
 
 export function testTrips(routeName: string) {
