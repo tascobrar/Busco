@@ -1,5 +1,5 @@
-export type Entry = Array<string>;
-export type Entries = Array<Entry>;
+export type Entry = String[];
+export type Entries = Entry[];
 export type EntryBook = Map<string, Entries>;
 export type CoordinatePair = number[];
 
