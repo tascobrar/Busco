@@ -1,6 +1,6 @@
-export type Entry = Array<String>;
+export type Entry = Array<string>;
 export type Entries = Array<Entry>;
-export type EntryBook = Map<String, Entries>;
+export type EntryBook = Map<string, Entries>;
 
 export function getFileContentsAsEntries(fileContents: string): Entries {
     return fileContents
