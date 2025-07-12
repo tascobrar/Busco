@@ -23,16 +23,6 @@ export function main(): void {
         console.error(`Main initialization failed! ${initializationResult.message}`);
         return;
     }
-
-    runTests();
 }
 
-function runTests(): void {
-    testTrips("Q53+");
-    testShapes("SBS440520");
-    testRouteShapeDesignations("Q35");
-    testShapeCoordinateDesignations("SBS440520");
-    console.log(getRouteCoordinates("Q50"));
-}
-
-main();
+// main();

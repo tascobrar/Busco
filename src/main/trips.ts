@@ -1,4 +1,4 @@
-import fs from "fs";
+import * as fs from "fs";
 import { getFileContentsAsEntries, EntryBook, Entries } from "./utils";
 import { failedInitialization, InitializationResult, SUCCESS } from "./initialization";
 
