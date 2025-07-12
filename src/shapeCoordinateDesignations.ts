@@ -1,5 +1,5 @@
 import { allRoutesToShapes } from "./routeShapeDesignations";
-import { shapeFileToShapeEntries } from "./shapes";
+import { SHAPE_LATITUDE_INDEX, SHAPE_LONGITUDE_INDEX, shapeFileToShapeEntries } from "./shapes";
 import { CoordinatePair } from "./utils";
 
 export const shapeFileToShapeToCoordinates: Map<string, Map<string, CoordinatePair[]>> = new Map();
@@ -11,7 +11,7 @@ export function initializeShapeCoordinateDesignations() {
         shapeFileToShapeToCoordinates.set(shapeFile, shapeToCoordinates);
         shapeEntries.forEach((shapeEntry) => {
             const shape: string = shapeEntry[0];
-            const coordinatePair: CoordinatePair = [parseFloat(shapeEntry[1]), parseFloat(shapeEntry[2])];
+            const coordinatePair: CoordinatePair = [parseFloat(shapeEntry[SHAPE_LONGITUDE_INDEX]), parseFloat(shapeEntry[SHAPE_LATITUDE_INDEX])];
             if (shapeToCoordinates.has(shape)) {
                 shapeFileToShapeToCoordinates.get(shapeFile).get(shape).push(coordinatePair);
             }

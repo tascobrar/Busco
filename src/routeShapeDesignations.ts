@@ -1,4 +1,4 @@
-import { tripFileToTripEntries } from "./trips";
+import { TRIP_ROUTE_INDEX, TRIP_SHAPE_INDEX, tripFileToTripEntries } from "./trips";
 
 export const tripFileToRouteToShapesMap: Map<string, Map<string, string[]>> = new Map(); 
 export let allRoutesToShapes: Map<string, string[]> = new Map();
@@ -13,8 +13,8 @@ export function initializeRouteShapeDesignations() {
             tripFileToRouteToShapesMap.set(tripFileName, routeToShapesMap = new Map());
         }
         tripEntries.forEach((tripEntry) => {
-            let route: string = tripEntry[0];
-            let shape: string = tripEntry[6];
+            let route: string = tripEntry[TRIP_ROUTE_INDEX];
+            let shape: string = tripEntry[TRIP_SHAPE_INDEX];
             let shapes: string[];
             if (routeToShapesMap.has(route)) {
                 shapes = routeToShapesMap.get(route);

@@ -1,6 +1,8 @@
 import fs from "fs";
 import { getFileContentsAsEntries, EntryBook, Entries } from "./utils";
 
+export const TRIP_ROUTE_INDEX: number = 0;
+export const TRIP_SHAPE_INDEX: number = 6;
 export const tripFileToTripEntries: EntryBook = new Map<string, Entries>();
 export let allTripEntries: Entries = [];
 
@@ -31,7 +33,7 @@ export function initializeTrips(): boolean {
 export function testTrips(routeName: string) {
     console.log(`Testing trips with name ${routeName}`);
     allTripEntries.forEach((tripEntry) => {
-        if (tripEntry[0] == routeName) {
+        if (tripEntry[TRIP_ROUTE_INDEX] == routeName) {
             console.log(`Found ${routeName} entry ${tripEntry}`);
         }
     });

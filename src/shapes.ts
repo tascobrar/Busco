@@ -1,6 +1,9 @@
 import fs from "fs";
 import { Entries, EntryBook, getFileContentsAsEntries } from "./utils";
 
+export const SHAPE_SHAPE_INDEX: number = 0;
+export const SHAPE_LONGITUDE_INDEX: number = 1;
+export const SHAPE_LATITUDE_INDEX: number = 2;
 export const shapeFileToShapeEntries: EntryBook = new Map<string, Entries>();
 export let allShapeEntries: Entries = [];
 
@@ -31,7 +34,7 @@ export function initializeShapes(): boolean {
 export function testShapes(shapeName: string) {
     console.log(`Testing shapes with name ${shapeName}`);
     allShapeEntries.forEach((shapeEntry) => {
-        if (shapeEntry[0] == shapeName) {
+        if (shapeEntry[SHAPE_SHAPE_INDEX] == shapeName) {
             console.log(`Found ${shapeName} entry ${shapeEntry}`);
         }
     });
