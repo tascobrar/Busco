@@ -16,6 +16,7 @@
     "outDir": "./built",
     "allowJs": true,
     "target": "es6",
+    "rootDir": "./src/",
     // https://github.com/DefinitelyTyped/DefinitelyTyped/discussions/67406#discussioncomment-7866621
     "paths": {
       // This is solely to stop a bug with @types/node as of 12/15/2023
