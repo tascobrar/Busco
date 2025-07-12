@@ -1,4 +1,4 @@
-import { initialize } from "../main";
+import { initialize } from "../main/initialization";
 import { allRoutesToShapes } from "../main/routeShapeDesignations";
 import { allShapesToCoordinates } from "../main/shapeCoordinateDesignations";
 import { allShapeEntries, SHAPE_SHAPE_INDEX } from "../main/shapes";
@@ -16,7 +16,7 @@ beforeAll(() => {
 
 describe("trips tests", () => {
     test("allTripEntries contains trip entries of multiple agencies", () => {
-        const allRoutes = allTripEntries.map((tripEntry) => tripEntry[TRIP_ROUTE_INDEX]);
+        const allRoutes: string[] = allTripEntries.map((tripEntry) => tripEntry[TRIP_ROUTE_INDEX]);
         expect(allRoutes).toContain("M23+");
         expect(allRoutes).toContain("Q64");
         expect(allRoutes).toContain("B35");
@@ -25,7 +25,7 @@ describe("trips tests", () => {
 
 describe("shapes test", () => {
     test("allShapeEntries contains shape entries of multiple agencies", () => {
-        const allShapes = allShapeEntries.map((shapeEntry) => shapeEntry[SHAPE_SHAPE_INDEX]);
+        const allShapes: string[] = allShapeEntries.map((shapeEntry) => shapeEntry[SHAPE_SHAPE_INDEX]);
         expect(allShapes).toContain("Q240239");
         expect(allShapes).toContain("Q030116");
         expect(allShapes).toContain("S530021");
@@ -34,7 +34,7 @@ describe("shapes test", () => {
 
 describe("route shape designations test", () => {
     test("allRoutesToShapes contains routes of multiple agencies", () => {
-        const allRoutes = [...allRoutesToShapes.keys()];
+        const allRoutes: string[] = [...allRoutesToShapes.keys()];
         expect(allRoutes).toContain("Q70+");
         expect(allRoutes).toContain("Q21");
         expect(allRoutes).toContain("BX12");
@@ -43,7 +43,7 @@ describe("route shape designations test", () => {
 
 describe("shape coordinate designations test", () => {
     test("allShapesToCoordinates contains shapes of multiple agencies", () => {
-        const allShapes = [...allShapesToCoordinates.keys()];
+        const allShapes: string[] = [...allShapesToCoordinates.keys()];
         expect(allShapes).toContain("SBS860058");
         expect(allShapes).toContain("SBS440528");
         expect(allShapes).toContain("Q350112");
