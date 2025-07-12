@@ -8,5 +8,8 @@ module.exports = {
   transform: {
     ...tsJestTransformCfg,
   },
-  preset: "ts-jest"
+  preset: "ts-jest",
+  testPathIgnorePatterns: [
+      "built/"
+  ]
 };
