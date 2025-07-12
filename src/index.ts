@@ -3,9 +3,9 @@ import { getRouteCoordinates, initializeShapeCoordinateDesignations, testShapeCo
 import { initializeShapes, testShapes } from "./shapes.js";
 import { initializeTrips, testTrips } from "./trips.js";
 
-let initialized = false;
+let initialized: boolean = false;
 
-function initialize() {
+function initialize(): boolean {
     if (initializeTrips() && initializeShapes() && initializeRouteShapeDesignations() && initializeShapeCoordinateDesignations()) {
         return initialized = true;
     }
@@ -14,7 +14,7 @@ function initialize() {
     }
 }
 
-export function main() {
+export function main(): void {
     process.chdir("./run/");
     if (!initialize()) {
         console.error("Initialization failed!");
@@ -24,7 +24,7 @@ export function main() {
     runTests();
 }
 
-function runTests() {
+function runTests(): void {
     testTrips("Q53+");
     testShapes("SBS440520");
     testRouteShapeDesignations("Q35");
