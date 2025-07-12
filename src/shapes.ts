@@ -20,7 +20,7 @@ export function initializeShapes(): boolean {
         const shapeFileContents: string = fs.readFileSync(`${SHAPES_DIRECTORY}/${shapeFileName}`).toString();
         const shapeEntries: Entries = getFileContentsAsEntries(shapeFileContents);
         shapeEntries.forEach((shapeEntry) => {
-            shapeEntry[3] = shapeEntry[3].replace(/\r/g, "");
+            shapeEntry[shapeEntry.length - 1] = shapeEntry[shapeEntry.length - 1].replace(/\r/g, "");
         });
         shapeFileToShapeEntries.set(shapeFileName, shapeEntries);
         allShapeEntries = allShapeEntries.concat(shapeEntries);

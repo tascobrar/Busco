@@ -20,7 +20,7 @@ export function initializeTrips(): boolean {
         const tripFileContents: string = fs.readFileSync(`${TRIPS_DIRECTORY}/${tripFileName}`).toString();
         const tripEntries: Entries = getFileContentsAsEntries(tripFileContents);
         tripEntries.forEach((tripEntry) => {
-            tripEntry[6] = tripEntry[6].replace(/\r/g, "");
+            tripEntry[tripEntry.length - 1] = tripEntry[tripEntry.length - 1].replace(/\r/g, "");
         })
         tripFileToTripEntries.set(tripFileName, tripEntries);
         allTripEntries = allTripEntries.concat(tripEntries);
