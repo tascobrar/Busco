@@ -11,6 +11,8 @@
     "noUncheckedIndexedAccess": true,
     "strictBindCallApply": true,
     "strictFunctionTypes": true,
+    "module": "node16",
+    "moduleResolution": "node16",
     "outDir": "./built",
     "allowJs": true,
     "target": "es6",

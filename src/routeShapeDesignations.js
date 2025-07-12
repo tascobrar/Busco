@@ -1,4 +1,4 @@
-import { tripFileToTripEntries } from "./trips.js";
+import { tripFileToTripEntries } from "./trips";
 
 export const tripFileToRouteToShapesMap = new Map(); 
 export let allRoutesToShapes = new Map();

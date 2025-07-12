@@ -1,5 +1,5 @@
-import { allRoutesToShapes } from "./routeShapeDesignations.js";
-import { shapeFileToShapeEntries } from "./shapes.js";
+import { allRoutesToShapes } from "./routeShapeDesignations";
+import { shapeFileToShapeEntries } from "./shapes";
 
 export const shapeFileToShapeToCoordinates = new Map();
 export let allShapesToCoordinates = new Map();

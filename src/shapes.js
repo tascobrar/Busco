@@ -1,5 +1,5 @@
 import fs from "fs";
-import { getFileContentsAsEntries } from "./utils.js";
+import { getFileContentsAsEntries } from "./utils";
 
 export const shapeFileToShapeEntries = new Map();
 export let allShapeEntries = [];

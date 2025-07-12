@@ -1,7 +1,7 @@
-import { initializeRouteShapeDesignations, testRouteShapeDesignations } from "./routeShapeDesignations.js";
-import { getRouteCoordinates, initializeShapeCoordinateDesignations, testShapeCoordinateDesignations } from "./shapeCoordinateDesignations.js";
-import { initializeShapes, testShapes } from "./shapes.js";
-import { initializeTrips, testTrips } from "./trips.js";
+import { initializeRouteShapeDesignations, testRouteShapeDesignations } from "./routeShapeDesignations";
+import { getRouteCoordinates, initializeShapeCoordinateDesignations, testShapeCoordinateDesignations } from "./shapeCoordinateDesignations";
+import { initializeShapes, testShapes } from "./shapes";
+import { initializeTrips, testTrips } from "./trips";
 
 let initialized: boolean = false;
 
