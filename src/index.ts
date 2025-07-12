@@ -5,7 +5,7 @@ import { initializeTrips, testTrips } from "./trips";
 
 let initialized: boolean = false;
 
-function initialize(): boolean {
+export function initialize(): boolean {
     if (initializeTrips() && initializeShapes() && initializeRouteShapeDesignations() && initializeShapeCoordinateDesignations()) {
         return initialized = true;
     }
