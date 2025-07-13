@@ -1,6 +1,7 @@
 import { InitializationResult, initialize } from "../main/initialization";
 
 import express, { Application } from "express"; 
+import { allTripEntries, TRIP_ROUTE_INDEX } from "../main/trips";
 
 const PORT: number = 3000;
 
@@ -14,11 +15,20 @@ function main() {
     app.listen(PORT, "localhost", () => {
         console.log(`Running map server on port ${PORT}`);
     });
-    app.get('/', (req, res) => {
+    app.get('/busmap', (req, res) => {
         res.writeHead(200, "{Content-Type: text/html"); 
+        let bus = req.query["bus"];
+        if (!bus) {
+            res.end(`
+                you did not select a bus
+            `);
+            return;
+        }
         res.end(`
-            yo   
-        `);
+            you selected the ${bus}
+            here's some information
+            ${allTripEntries.filter((tripEntry) => tripEntry[TRIP_ROUTE_INDEX] == bus)}
+        `)
     });
 }
 

@@ -4,10 +4,11 @@
   "description": "Parses static transit info from the MTA",
   "main": "index.js",
   "scripts": {
-    "start": "tsc && node built/main/index.js",
+    "start": "npm run compilets && node built/main/index.js",
     "test": "npx jest",
-    "map": "tsc && node built/host/index.js",
-    "allQueensBusRoutes": "tsc && node built/video/allQueensBusRoutes.js"
+    "map": "npm run compilets && node built/host/index.js",
+    "allQueensBusRoutes": "npm run compilets && node built/video/allQueensBusRoutes.js",
+    "compilets": "tsc --skipLibCheck --incremental"
   },
   "repository": {
     "type": "git",
