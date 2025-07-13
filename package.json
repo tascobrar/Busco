@@ -6,7 +6,7 @@
   "scripts": {
     "start": "tsc && node built/main/index.js",
     "test": "npx jest",
-    "map": "tsc && node built/map/index.js",
+    "map": "tsc && node built/host/index.js",
     "allQueensBusRoutes": "tsc && node built/video/allQueensBusRoutes.js"
   },
   "repository": {
