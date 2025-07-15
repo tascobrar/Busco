@@ -4,10 +4,10 @@
   "description": "Parses static transit info from the MTA",
   "main": "index.js",
   "scripts": {
-    "start": "node src/main/index.ts",
+    "start": "npx tsx src/main/index.ts",
     "test": "npx jest",
-    "map": "node src/host/index.ts",
-    "allQueensBusRoutes": "node src/video/allQueensBusRoutes.ts"
+    "map": "npx tsx src/host/index.ts",
+    "allQueensBusRoutes": "npx tsx src/video/allQueensBusRoutes.ts"
   },
   "repository": {
     "type": "git",
