@@ -6,7 +6,7 @@
   "scripts": {
     "start": "npx tsx src/main/index.ts",
     "test": "npx jest",
-    "map": "npx tsx src/host/index.ts",
+    "host": "npx tsx src/host/index.ts",
     "allQueensBusRoutes": "npx tsx src/video/allQueensBusRoutes.ts"
   },
   "repository": {
