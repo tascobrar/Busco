@@ -16,9 +16,9 @@
             const title = `Busco: ${bus} bus map`;
             document.title = title;
 
-            const longitude = 40.7420;
+            const longitude = 40.73;
             const latitude = -73.9074;
-            const zoom = 10;
+            const zoom = 10.5;
             const map = L.map('map').setView([longitude, latitude], zoom);
             const layer = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
                 maxZoom: 19,
@@ -30,8 +30,8 @@
                 const coordinatePairs = listOfCoordinatePairs[i];
                 const polyline = L.polyline(coordinatePairs, {color: "blue"}).addTo(map);
                 if (i == 0) {
-                    const startPopup = L.popup().setLatLng(L.latLng(coordinatePairs[0][0], coordinatePairs[0][1]));
-                    polyline.bindPopup(startPopup);
+                    const startPopup = L.popup().setLatLng(L.latLng(coordinatePairs[0][0], coordinatePairs[0][1])).setContent(bus);
+                    map.openPopup(startPopup);
                 }
             }
         </script>
