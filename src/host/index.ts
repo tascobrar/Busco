@@ -20,8 +20,8 @@ function main() {
     app.get('/busmap', (req, res) => {
         let bus = req.query["bus"];
         const data = {
-            title: `Busco: ${bus} bus map`,
-            coordinateString: JSON.stringify(getRouteCoordinates(bus.toString()))
+            bus: bus,
+            listOfCoordinatePairs: JSON.stringify(getRouteCoordinates(bus.toString()))
         };
         res.render("index", {data});
     });
