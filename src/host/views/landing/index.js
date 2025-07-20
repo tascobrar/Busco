@@ -2,13 +2,16 @@ document.title = "Busco";
         
 const longitude = 40.73;
 const latitude = -73.9074;
-const zoom = 10.5;
+const zoom = 11;
+const maxZoom = 19;
+
 const map = L.map('map').setView([longitude, latitude], zoom);
 const layer = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    maxZoom: 19,
+    maxZoom: maxZoom,
     attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
 }).addTo(map);
-const bus = "Q35";
+map.setZoom(zoom);
+const bus = "SIM30";
 fetch(`http://localhost:3000/rawroutecoords?bus=${bus}`).then((response) => response.json().then((listOfCoordinatePairs) => {
     for (let i = 0; i < listOfCoordinatePairs.length; i ++) {
         const coordinatePairs = listOfCoordinatePairs[i];
