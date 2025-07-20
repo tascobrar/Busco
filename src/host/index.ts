@@ -15,15 +15,10 @@ function main() {
     process.chdir(__dirname);
     console.log(__dirname);
     const app: Application = express();
-    app.set("view engine", "ejs");
-    app.set("views", "./views");
-    app.get('/busmap', (req, res) => {
-        let bus = req.query["bus"];
-        const data = {
-            bus: bus,
-            listOfCoordinatePairs: JSON.stringify(getRouteCoordinates(bus.toString()))
-        };
-        res.render("index", {data});
+    app.use("/landing", express.static("views/landing/"));
+    app.get('/rawroutecoords', (req, res) => {
+        let bus = req.query["bus"] as string;
+        res.json(getRouteCoordinates(bus));
     });
     app.listen(PORT, "localhost", () => {
         console.log(`Running map server on port ${PORT}`);
