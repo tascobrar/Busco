@@ -4,11 +4,12 @@ const longitude = 40.73;
 const latitude = -73.9074;
 const zoom = 11;
 const maxZoom = 19;
+const attribution = `&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> | <a href="https://www.mta.info/developers">MTA (developer resources)</a>`;
 
 const map = L.map('map').setView([longitude, latitude], zoom);
 const layer = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
     maxZoom: maxZoom,
-    attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+    attribution: attribution
 }).addTo(map);
 map.setZoom(zoom);
 const bus = "SIM30";
