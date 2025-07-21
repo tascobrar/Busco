@@ -17,7 +17,7 @@ function main() {
     const app: Application = express();
     app.use("/landing", express.static("views/landing/"));
     app.get('/rawroutecoords', (req, res) => {
-        let bus = req.query["bus"] as string;
+        let bus = (req.query["bus"] as string).replace("SBS", "+");
         res.json(getRouteCoordinates(bus));
     });
     app.listen(PORT, "localhost", () => {
